@@ -15,6 +15,11 @@ class CreateCardsTable extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('image');
+            $table->float('price');
+            $table->boolean('sellable');
+            $table->bigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

@@ -22,7 +22,11 @@ class CardFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->name(),
+            'image' => "card.png",
+            'price' => null,
+            'sellable' => false,
+            'user_id' => null
         ];
     }
 }
