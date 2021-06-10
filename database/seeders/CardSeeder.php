@@ -13,6 +13,6 @@ class CardSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Card::factory()->count(10)->create();
+        \App\Models\Card::factory()->count(20)->create();
     }
 }

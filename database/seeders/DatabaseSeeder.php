@@ -30,7 +30,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Create 10 users
-        \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(5)->create();
+
+
         $this->call([
             CardSeeder::class,
             BundleSeeder::class,
