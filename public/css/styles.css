@@ -21,6 +21,11 @@
 
 .card-box{
     border: solid 1px grey; margin:5px; float:left; padding:5px; text-align:center;
+    min-height: 350px;
+}
+
+.card-box:hover{
+    background-color: khaki;
 }
 
 .card-box img{
@@ -36,4 +41,17 @@
 
 .sellable{
     background-color: rgb(180, 255, 192);
+}
+
+.disabled{
+    background-color: rgb(255, 221, 227);
+    color: grey;
+}
+
+.disabled .price{
+    color: grey;
+}
+
+.disabled .price b{
+    color: grey;
 }

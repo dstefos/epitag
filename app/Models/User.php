@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(card::class);
     }
+
+    public function desposit($amount)
+    {
+        $this->balance+=$amount;
+    }
 }

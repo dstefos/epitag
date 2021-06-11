@@ -23,3 +23,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboardd', function () 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/bundles', App\Http\Livewire\Bundle\Index::class)->name('bundles');
 Route::middleware(['auth:sanctum', 'verified'])->get('/cards', App\Http\Livewire\Card\Index::class)->name('cards');
+Route::middleware(['auth:sanctum', 'verified'])->get('/marketplace', App\Http\Livewire\Marketplace::class)->name('marketplace');
