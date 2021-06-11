@@ -23,6 +23,7 @@
         {{ session('error') }}
     </div>
 @endif
+@if(\Auth::user()->admin)
 <button class="btn btn-primary" onclick="$('#create-dialog').show('slow')">Create Bundle</button>
 <div id="create-dialog" style="@if(!$showDialog)display: none;@endif">
     <form wire:submit.prevent="submit">
@@ -66,6 +67,7 @@
     </form>
 </div>
 <hr>
+@endif
 @foreach($bundles as $bundle)
     <div class="bundle-box">
         <h4>{{$bundle->title}}</h4>
