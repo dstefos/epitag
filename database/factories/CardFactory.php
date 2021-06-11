@@ -24,7 +24,7 @@ class CardFactory extends Factory
 
         return [
             'title' => $this->faker->name(),
-            'image' => "card.png",
+            'image' => "img/card.png",
             'price' => 0,
             'sellable' => false,
             'user_id' => null,

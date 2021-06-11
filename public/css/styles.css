@@ -1,0 +1,35 @@
+.error{
+    color:red;
+}
+
+.bundle-box{
+    border: solid 1px grey; margin:5px; float:left; padding:5px; text-align:center;
+}
+
+.bundle-box img{
+    height:70px;
+    margin: 0 auto;
+}
+
+.price b{
+    color: green;
+}
+
+#create-dialog{
+    padding: 10px;
+}
+
+.card-box{
+    border: solid 1px grey; margin:5px; float:left; padding:5px; text-align:center;
+}
+
+.card-box img{
+    height:170px;
+    margin: 0 auto;
+}
+
+.alert-cards{
+    background-color: #8accad;
+    overflow: hidden; 
+    border-radius: 10px;
+}

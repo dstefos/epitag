@@ -32,8 +32,11 @@ class Index extends Component
 
     public function buy(bundle $bundle)
     {
-        // dd('asdf');
-        $bundle->boughtBy(Auth::user());
+        $creationStatus=$bundle->boughtBy(Auth::user());
+        if(is_array($creationStatus))
+            session()->flash('cards', $creationStatus);
+        else
+            session()->flash('error', $creationStatus);
     }
 
     public function delete(bundle $bundle)
@@ -58,15 +61,19 @@ class Index extends Component
             dd('not authorized');
         $this->showDialog=true;
         $this->validate();
-        // $this->showDialog=false;
-        $this->newImage->store('img', ['disk' => 'public']);
-        // bundle::create(
-        //     [
-        //         'title'=>$this->newTitle,
-        //         'price'=>$this->newPrice,
-        //         'quantity'=>$this->newQuantity,
-        //         'image'=>$this->newImage
-        //     ]
-        // );
+        $this->showDialog=false;
+        $newImage=$this->newImage->store('img', ['disk' => 'public']);
+        
+        bundle::create(
+            [
+                'title'=>$this->newTitle,
+                'price'=>$this->newPrice,
+                'quantity'=>$this->newQuantity,
+                'image'=>$newImage
+            ]
+        );
+        $this->reset();
+        $this->bundles=bundle::get();
+        session()->flash('message', 'Bundle created succesfully.');
     }
 }
