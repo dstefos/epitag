@@ -21,7 +21,8 @@
 
 .card-box{
     border: solid 1px grey; margin:5px; float:left; padding:5px; text-align:center;
-    min-height: 350px;
+    /* min-height: 350px; */
+    max-width: 250px;
 }
 
 .card-box:hover{
@@ -31,6 +32,10 @@
 .card-box img{
     height:170px;
     margin: 0 auto;
+}
+
+.card-box .form-control{
+    margin-bottom: 5px;
 }
 
 .alert-cards{

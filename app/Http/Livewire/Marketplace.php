@@ -29,5 +29,6 @@ class Marketplace extends Component
             session()->flash('message', 'Trade completed succesfully.');
         
         $this->cards=card::where([['user_id', '!=', Auth::id()],['sellable', true]])->get();
+        $this->emit('refreshBalance');
     }
 }

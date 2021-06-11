@@ -37,6 +37,8 @@ class Index extends Component
             session()->flash('cards', $creationStatus);
         else
             session()->flash('error', $creationStatus);
+
+        $this->emit('refreshBalance');
     }
 
     public function delete(bundle $bundle)

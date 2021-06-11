@@ -1,6 +1,5 @@
 <div class="container" style="overflow: hidden;">
     @if (session()->has('message'))
-    asdf
     <div class="alert alert-success">
         {{ session('message') }}
     </div>
