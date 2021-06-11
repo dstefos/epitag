@@ -33,3 +33,7 @@
     overflow: hidden; 
     border-radius: 10px;
 }
+
+.sellable{
+    background-color: rgb(180, 255, 192);
+}

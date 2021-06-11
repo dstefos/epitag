@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" style="overflow: hidden;">
 
 @if (session()->has('message'))
     <div class="alert alert-success">
