@@ -21,14 +21,5 @@ class Marketplace extends Component
         return view('livewire.marketplace');
     }
     
-    public function buy(card $card)
-    {
-        if(Auth::user()->balance<$card->price)
-            session()->flash('error', 'You cannot afford this transaction');        
-        else if($card->trade(Auth::user())==true)                   
-            session()->flash('message', 'Trade completed succesfully.');
-        
-        $this->cards=card::where([['user_id', '!=', Auth::id()],['sellable', true]])->get();
-        $this->emit('refreshBalance');
-    }
+
 }
