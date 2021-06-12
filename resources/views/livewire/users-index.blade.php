@@ -3,19 +3,19 @@
         <tr>
             <th><a wire:click="sortBy('name')">Name</a></th>
             <th><a wire:click="sortBy('email')">email</a></th>
-            <th><a wire:click="sortBy('balance')">Balance</a></th>
+            @if(\Auth::user()->admin)<th><a wire:click="sortBy('balance')">Balance</a></th>@endif
             <th><a wire:click="sortBy('cards')">Cards</a></th>
             <th><a wire:click="sortBy('created_at')">Since</a></th>
-            <th></th>
+            @if(\Auth::user()->admin)<th></th>@endif
         </tr>
         @foreach($users as $user)
             <tr>
                 <td>{{$user['name']}}</td>
                 <td><a href="mailto:{{$user['email']}}">{{$user['email']}}</a></td>
-                <td>{{$user['balance']}}</td>
+                @if(\Auth::user()->admin)<td>{{$user['balance']}}</td>@endif
                 <td>{{$user['cards']}}</td>
                 <td>{{$user['created_at']}}</td>
-                <td>
+                @if(\Auth::user()->admin)<td>
                     <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Operations
@@ -26,7 +26,7 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                     </div>
-                </td>
+                </td>@endif
             </tr>
         @endforeach
     </table>

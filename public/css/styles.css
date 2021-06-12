@@ -100,3 +100,7 @@
 tr:hover{
     background-color: #c6ebda;
 }
+
+th:hover{
+    cursor: pointer;
+}
