@@ -6,7 +6,48 @@
         My cards
     @endif
 </h3>
+@if (session()->has('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
+@if (session()->has('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 @if(count($cards)==0) There are no cards @endif
+
+@if(\Auth::user()->admin)
+<button class="btn btn-primary" onclick="$('#create-dialog').show('slow')">Create Card</button>
+<div id="create-dialog" style="@if(!$showDialog)display: none;@endif">
+    <form wire:submit.prevent="submit">
+        @error('newTitle') <span class="error">{{ $message }}</span> @enderror
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="newTitle">Title</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="newTitle" wire:model="newTitle">
+        </div>
+
+        @error('newImage') <span class="error">{{ $message }}</span> @enderror
+        @if ($newImage)
+            Photo Preview:
+            <img src="{{ $newImage->temporaryUrl() }}" style="height:150px;" >
+        @endif
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="newImage">Image</span>
+            </div>
+            <input type="file" class="form-control" placeholder="Image" aria-label="Image" aria-describedby="newImage" wire:model="newImage">
+        </div>
+
+        <button class="btn btn-success">Create</button>
+    </form>
+</div>
+<hr>
+@endif
+
 @foreach($cards as $index=>$card)
     <div class="card-box @if($card->sellable) sellable @endif @if(\Auth::user()->admin) card-box-wowner @endif">
         <div class="card-title @if(\Auth::user()->admin) card-title-wowner @endif">{{$card->title}}</div>

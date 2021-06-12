@@ -17,7 +17,7 @@ class CreateCardsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('image');
-            $table->float('price');
+            $table->float('price')->default(0);
             $table->boolean('sellable');
             $table->bigInteger('user_id')->nullable();
             $table->timestamps();
