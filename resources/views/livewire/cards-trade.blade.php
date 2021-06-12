@@ -1,4 +1,5 @@
-@if (session()->has('message'))
+<div>
+    @if (session()->has('message'))
     <div class="alert alert-success">
         {{ session('message') }}
     </div>
@@ -10,18 +11,19 @@
     @endif
     @if(count($cards)==0) There are no cards @endif
     @foreach($cards as $index=>$card)
-        <div class="card-box card-box-market @if($card->price>\Auth::user()->balance) disabled @endif">
-            <div class="card-title">{{$card->title}}</div>
-            <div class="card-seller">Seller: <b>{{App\Models\User::find($card->user_id)->name}}</b></div>
-            <img src="@if($card->image=='bundle.png'){{asset('storage/img/bundle.png')}} @else {{asset('storage/'.$card->image)}} @endif" alt=""> 
-            <div class="card-price">Price: <b>${{$card->price}}</b></div> 
-            <div class="card-buy-btn">
-                @if($card->price>\Auth::user()->balance) <b style="color:red;">Insufficient Funds</b>  
-                @elseif($card->sellable)
-                <button class="btn btn-danger" wire:click="buy({{$card->id}})">BUY</button>
-                @else
-                <b style="color:red;">Not available</b>
-                @endif
-            </div>
+    <div class="card-box card-box-market @if($card->price>\Auth::user()->balance) disabled @endif">
+        <div class="card-title">{{$card->title}}</div>
+        <div class="card-seller">Seller: <b>{{App\Models\User::find($card->user_id)->name}}</b></div>
+        <img src="@if($card->image=='bundle.png'){{asset('storage/img/bundle.png')}} @else {{asset('storage/'.$card->image)}} @endif" alt=""> 
+        <div class="card-price">Price: <b>${{$card->price}}</b></div> 
+        <div class="card-buy-btn">
+            @if($card->price>\Auth::user()->balance) <b style="color:red;">Insufficient Funds</b>  
+            @elseif($card->sellable)
+            <button class="btn btn-danger" wire:click="$emit('buy', {{$card->id}})">BUY</button>
+            @else
+            <b style="color:red;">Not available</b>
+            @endif
         </div>
+    </div>
     @endforeach
+</div>

@@ -9,6 +9,15 @@ class CardsTrade extends Component
 {
     public $cards;
 
+    protected $listeners=['buy'];
+
+    public $currentUrl;
+
+    public function mount()
+    {
+        $this->currentUrl = url()->current();
+    }
+
     public function render()
     {
         return view('livewire.cards-trade');
@@ -23,5 +32,6 @@ class CardsTrade extends Component
         
         $this->cards=card::where([['user_id', '!=', Auth::id()],['sellable', true]])->get();
         $this->emit('refreshBalance');
+        return redirect()->to($this->currentUrl);
     }
 }

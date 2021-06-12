@@ -104,3 +104,16 @@ tr:hover{
 th:hover{
     cursor: pointer;
 }
+
+.dropdown-menu{
+    padding: 0;
+}
+
+.dropdown-item-delete{
+    background-color: pink;
+    color:white;
+}
+
+.dropdown-item-delete:hover{
+    background-color: red;
+}

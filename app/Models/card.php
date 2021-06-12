@@ -18,7 +18,7 @@ class card extends Model
     public function trade(User $buyer)
     {
         // Check if the card belongs to a user and if the buyer can afford this trade
-        if($this->user_id==null || $buyer->balance<$this->price)
+        if($this->user_id==null || $buyer->balance<$this->price || $buyer->id==$this->user_id)
             return false;
 
         // Retrieve the owner of the card and increase their balance

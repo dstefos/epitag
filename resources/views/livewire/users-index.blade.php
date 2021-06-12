@@ -1,4 +1,15 @@
-<div class="container" style="overflow: hidden;">
+<div class="container">
+@if (session()->has('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+    @endif
+    @if (session()->has('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
+<h3>Available Users</h3>
     <table style="width: 100%;">
         <tr>
             <th><a wire:click="sortBy('name')">Name</a></th>
@@ -23,9 +34,9 @@
                         Operations
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <input type="text" wire:model.defer="newPassword" placeholder="Type password here..." class="dropdown-item form-control">
+                        <a class="dropdown-item" wire:click="updatePassword({{$user['id']}})" href="#">Update Password</a>
+                        <a class="dropdown-item-delete dropdown-item" wire:click="deleteUser({{$user['id']}})" href="#">Delete</a>
                     </div>
                     </div>
                 </td>@endif

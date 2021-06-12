@@ -21,5 +21,9 @@ class Marketplace extends Component
         return view('livewire.marketplace');
     }
     
+    public function buy($cardId)
+    {
+        $this->emit('buy', $cardId);
+    }
 
 }

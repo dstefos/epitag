@@ -69,4 +69,11 @@ class User extends Authenticatable
     {
         $this->balance+=$amount;
     }
+
+    public static function deleteAndDessociate($id)
+    {
+        $user=User::findOrFail($id);
+        card::where('user_id', $id)->update(array('user_id'=>null));
+        User::destroy($id);
+    }
 }
