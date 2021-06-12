@@ -25,3 +25,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/bundles', App\Http\Livewi
 Route::middleware(['auth:sanctum', 'verified'])->get('/cards', App\Http\Livewire\Card\Index::class)->name('cards');
 Route::middleware(['auth:sanctum', 'verified'])->get('/marketplace', App\Http\Livewire\Marketplace::class)->name('marketplace');
 Route::middleware(['auth:sanctum', 'verified'])->get('/users', App\Http\Livewire\UsersIndex::class)->name('users');
+Route::middleware(['auth:sanctum', 'verified'])->get('/usercards/{user}', App\Http\Livewire\UserCards::class)->name('user-cards');

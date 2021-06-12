@@ -17,8 +17,10 @@
             <div class="card-price">Price: <b>${{$card->price}}</b></div> 
             <div class="card-buy-btn">
                 @if($card->price>\Auth::user()->balance) <b style="color:red;">Insufficient Funds</b>  
-                @else
+                @elseif($card->sellable)
                 <button class="btn btn-danger" wire:click="buy({{$card->id}})">BUY</button>
+                @else
+                <b style="color:red;">Not available</b>
                 @endif
             </div>
         </div>
