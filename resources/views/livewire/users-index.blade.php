@@ -5,6 +5,7 @@
             <th><a wire:click="sortBy('email')">email</a></th>
             @if(\Auth::user()->admin)<th><a wire:click="sortBy('balance')">Balance</a></th>@endif
             <th><a wire:click="sortBy('cards')">Cards</a></th>
+            <th>Rank</th>
             <th><a wire:click="sortBy('created_at')">Since</a></th>
             @if(\Auth::user()->admin)<th></th>@endif
         </tr>
@@ -13,7 +14,8 @@
                 <td>{{$user['name']}}</td>
                 <td><a href="mailto:{{$user['email']}}">{{$user['email']}}</a></td>
                 @if(\Auth::user()->admin)<td>{{$user['balance']}}</td>@endif
-                <td>{{$user['cards']}}</td>
+                <td><a href="/usercards/{{$user['id']}}">{{$user['cards']}}</a></td>
+                <td>@if($user['admin'])Admin @else User @endif</td>
                 <td>{{$user['created_at']}}</td>
                 @if(\Auth::user()->admin)<td>
                     <div class="dropdown">

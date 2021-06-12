@@ -1,4 +1,11 @@
 <div class="container" style="overflow: hidden;">
+<h3>
+    @if(\Auth::user()->admin)
+        All cards on the Database
+    @else
+        My cards
+    @endif
+</h3>
 @if(count($cards)==0) There are no cards @endif
 @foreach($cards as $index=>$card)
     <div class="card-box @if($card->sellable) sellable @endif @if(\Auth::user()->admin) card-box-wowner @endif">

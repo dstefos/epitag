@@ -15,8 +15,8 @@ class UsersIndex extends Component
 
         // Get users with their card count as array, as livewire can't handle collections very well
         $this->users=User::join('cards', 'users.id', '=', 'cards.user_id')
-        ->selectRaw('users.id, users.name, users.email, users.balance, users.created_at, count(cards.id) as cards')
-        ->groupBy('users.id', 'users.name', 'users.email', 'users.balance', 'users.created_at')
+        ->selectRaw('users.id, users.name, users.email, users.balance, users.admin, users.created_at, count(cards.id) as cards')
+        ->groupBy('users.id', 'users.name', 'users.email', 'users.balance', 'users.admin', 'users.created_at')
         ->get()->toArray();
         ;
     }

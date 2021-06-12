@@ -1,6 +1,6 @@
 
 <div class="container" style="overflow: hidden;">
-
+<h3>Available bundles for purchase</h3>
 @if (session()->has('message'))
     <div class="alert alert-success">
         {{ session('message') }}
