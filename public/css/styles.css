@@ -96,3 +96,7 @@
 .disabled .price b{
     color: grey;
 }
+
+tr:hover{
+    background-color: #c6ebda;
+}
