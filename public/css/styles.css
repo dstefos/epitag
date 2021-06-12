@@ -21,21 +21,57 @@
 
 .card-box{
     border: solid 1px grey; margin:5px; float:left; padding:5px; text-align:center;
-    /* min-height: 350px; */
-    max-width: 250px;
+    height: 450px;
+    width: 200px;
+}
+
+.card-box-market{
+    height: 450px;
 }
 
 .card-box:hover{
     background-color: khaki;
 }
 
-.card-box img{
-    height:170px;
-    margin: 0 auto;
-}
 
 .card-box .form-control{
     margin-bottom: 5px;
+}
+
+.card-box-wowner{
+    height: 550px;
+}
+
+.card-title{
+    height: 14%;
+    margin-top: 5%;
+    font-weight: bold;
+    font-size: large;
+}
+
+.card-title-wowner{
+    height: 7%;
+}
+
+.card-box-market .card-title{
+    height: 10%;
+}
+
+.card-seller{
+    height: 10%;
+}
+
+.card-box img{
+    height:50%;
+    margin: 0 auto;
+}
+
+.card-price{
+    height: 10%;
+}
+
+.card-buy-btn{
+    height: 10%;
 }
 
 .alert-cards{

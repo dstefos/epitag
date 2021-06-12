@@ -11,15 +11,17 @@
     @endif
     @if(count($cards)==0) There are no cards @endif
     @foreach($cards as $index=>$card)
-        <div class="card-box @if($card->price>\Auth::user()->balance) disabled @endif">
-            <h4>{{$card->title}}</h4>
-            <span>Seller: <b>{{App\Models\User::find($card->user_id)->name}}</b></span>
-            <img src="@if($card->image=='bundle.png'){{asset('storage/img/bundle.png')}} @else {{asset('storage/'.$card->image)}} @endif" alt=""> <br>
-            <span class="price">Price: <b>${{$card->price}}</b></span> <br>
-            @if($card->price>\Auth::user()->balance) <b style="color:red;">Insufficient Funds</b> <br> 
-            @else
-            <button class="btn btn-danger" wire:click="buy({{$card->id}})">BUY</button><br>
-            @endif
+        <div class="card-box card-box-market @if($card->price>\Auth::user()->balance) disabled @endif">
+            <div class="card-title">{{$card->title}}</div>
+            <div class="card-seller">Seller: <b>{{App\Models\User::find($card->user_id)->name}}</b></div>
+            <img src="@if($card->image=='bundle.png'){{asset('storage/img/bundle.png')}} @else {{asset('storage/'.$card->image)}} @endif" alt=""> 
+            <div class="card-price">Price: <b>${{$card->price}}</b></div> 
+            <div class="card-buy-btn">
+                @if($card->price>\Auth::user()->balance) <b style="color:red;">Insufficient Funds</b>  
+                @else
+                <button class="btn btn-danger" wire:click="buy({{$card->id}})">BUY</button>
+                @endif
+            </div>
         </div>
     @endforeach
 </div>
