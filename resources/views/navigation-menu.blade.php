@@ -21,6 +21,9 @@
                     <x-jet-nav-link href="{{ route('marketplace') }}" :active="request()->routeIs('marketplace')">
                         {{ __('Marketplace') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
+                        {{ __('Users') }}
+                    </x-jet-nav-link>
                     
                 </div>
             </div>
@@ -154,6 +157,9 @@
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('marketplace') }}" :active="request()->routeIs('marketplace')">
                 {{ __('Marketplace') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
+                {{ __('Users') }}
             </x-jet-responsive-nav-link>
         </div>
 

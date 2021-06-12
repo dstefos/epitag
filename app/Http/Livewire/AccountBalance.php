@@ -35,12 +35,13 @@ class AccountBalance extends Component
 
         // Refresh the balance depiction
         $this->balance=$user->balance;
+        $this->newBalance=0; 
     }
     
     // Refresh the balance depiction
     public function refreshBalance()
     {
         $user=User::find(Auth::id());
-        $this->balance=$user->balance;       
+        $this->balance=$user->balance;      
     }
 }
