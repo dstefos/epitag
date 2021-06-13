@@ -15,18 +15,20 @@
             <th><a wire:click="sortBy('name')">Name</a></th>
             <th><a wire:click="sortBy('email')">email</a></th>
             @if(\Auth::user()->admin)<th><a wire:click="sortBy('balance')">Balance</a></th>@endif
-            <th><a wire:click="sortBy('cards')">Cards(Purchasables)</a></th>
-            <th>Rank</th>
+            <th><a wire:click="sortBy('cards')">Cards</a></th>
+            <th><a wire:click="sortBy('sellables')">Purchasable Cards</a></th>
+            <th><a wire:click="sortBy('rank')">Rank</a></th>
             <th><a wire:click="sortBy('created_at')">Since</a></th>
-            @if(\Auth::user()->admin)<th></th>@endif
+            @if(\Auth::user()->admin)<th>Manage</th>@endif
         </tr>
         @foreach($users as $user)
             <tr>
                 <td>{{$user['name']}}</td>
                 <td><a href="mailto:{{$user['email']}}">{{$user['email']}}</a></td>
                 @if(\Auth::user()->admin)<td>{{$user['balance']}}</td>@endif
-                <td><a href="/usercards/{{$user['id']}}">{{$user['cards']}}({{$user['sellables']}})</a></td>
-                <td>@if($user['admin'])Admin @else User @endif</td>
+                <td><a href="/usercards/{{$user['id']}}">{{$user['cards']}}</a></td>
+                <td><a href="/usercards/{{$user['id']}}">{{$user['sellables']}}</a></td>
+                <td>{{$user['rank']}}</td>
                 <td>{{$user['created_at']}}</td>
                 @if(\Auth::user()->admin)<td>
                     <div class="dropdown">
