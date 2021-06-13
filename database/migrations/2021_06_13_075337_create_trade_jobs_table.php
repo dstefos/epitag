@@ -21,6 +21,7 @@ class CreateTradeJobsTable extends Migration
             $table->dateTime('whenTime')->nullable();
             $table->float('whenPriceBigger')->nullable();
             $table->float('whenPriceSmaller')->nullable();
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
