@@ -14,12 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/bundles');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboardd', function () {
-    return view('dashboard');
-})->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/bundles', App\Http\Livewire\Bundle\Index::class)->name('bundles');
 Route::middleware(['auth:sanctum', 'verified'])->get('/cards', App\Http\Livewire\Card\Index::class)->name('cards');
