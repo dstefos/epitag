@@ -86,6 +86,7 @@
 </div>
 <hr>
 @endif
+
 @foreach($bundles as $bundle)
     <div class="bundle-box">
         <h4>{{$bundle->title}}</h4>
@@ -94,6 +95,17 @@
         <span class="price">Price: <b>${{$bundle->price}}</b></span> <br>
         <button class="btn btn-success" wire:click="buy({{$bundle->id}})">BUY</button><br>
         @if(\Auth::user()->admin)<button class="btn btn-danger" wire:click="delete({{$bundle->id}})">DELETE</button>@endif
+    </div>
+
+    <div class="container product-container">
+        <div class="row"><span class="col-12 product-title">{{$bundle->title}}</span></div>
+        <div class="row"><span class="col-12 product-label"> Quantity: <b>{{$bundle->quantity}}</b></span></div>
+        <div class="row"> <img class="col-12 product-image" src="@if($bundle->image=='bundle.png'){{asset('storage/img/bundle.png')}} @else {{asset('storage/'.$bundle->image)}} @endif" alt="Bundle Image"></div>
+        <div class="row"><span class="col-12 product-price"> Price <b>${{$bundle->price}}</b></span></div>
+        @if(\Auth::user()->balance<$bundle->price)<div class="row"><span class="col-12"><b style="color:red;">Insufficient Funds</b></b></span></div>
+        @else<div class="row"> <div class="col-12"> <button class="form-control btn btn-success btn-sm" wire:click="$emit('buy', {{$bundle->id}})">BUY</button></div></div>@endif
+        <div class="row"> <div class="col-12"> <button class="button form-control btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="$('#bundleId').val({{$bundle->id}});">Schedule</button></div></div>
+        @if(\Auth::user()->admin)<div class="row"> <div class="col-12"> <button class="form-control btn btn-danger btn-sm" wire:click="delete({{$bundle->id}})">DELETE</button></div></div>@endif
     </div>
 @endforeach
 </div>

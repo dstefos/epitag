@@ -12,8 +12,9 @@ class Index extends Component
     use WithFileUploads;
 
     public $bundles, $newTitle, $newPrice, $newQuantity, $newImage, $showDialog=false;
+    public $currentUrl;
 
-    protected $listeners=['buy', 'setId', 'createTradeJob', 'resetForm'];
+    protected $listeners=['buy', 'delete', 'setId', 'createTradeJob', 'resetForm'];
     
     protected $rules = [
         'newTitle' => 'required',
@@ -24,6 +25,7 @@ class Index extends Component
 
     public function mount()
     {
+        $this->currentUrl = url()->current();
         $this->bundles=bundle::get();
     }
 
@@ -49,8 +51,9 @@ class Index extends Component
             dd('not authorized');
         
         bundle::destroy($bundle->id);
-        $this->bundles=bundle::get();
+        // $this->bundles=bundle::get();
         session()->flash('message', 'Bundle deleted.');
+        return redirect()->to($this->currentUrl);
     }
 
     public function updated()
