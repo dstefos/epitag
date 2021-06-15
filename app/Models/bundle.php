@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\card;
+use Hamcrest\Arrays\IsArray;
 
 class bundle extends Model
 {
@@ -32,7 +33,11 @@ class bundle extends Model
         
         // Get random cards and attach them to User
         $selectedCards=array_rand($cards, $this->quantity);
+        
+        if(!is_array($selectedCards))
+            $selectedCards=[$selectedCards];
         $obtainedCards=[];
+
         foreach ($selectedCards as $cardIndex) {
             $card=card::find($cards[$cardIndex]['id']);
             $card->user_id=$user->id;

@@ -126,5 +126,11 @@ th:hover{
     border: solid 1px grey; margin:5px; float:left; padding:5px; text-align:center;
     /* height: 450px; */
     width: 200px;
+    
+}
 
+.product-container img{
+    height: 150px;
+    width: auto;
+    margin: 0 auto;
 }

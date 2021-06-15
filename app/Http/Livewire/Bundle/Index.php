@@ -13,6 +13,8 @@ class Index extends Component
 
     public $bundles, $newTitle, $newPrice, $newQuantity, $newImage, $showDialog=false;
 
+    protected $listeners=['buy', 'setId', 'createTradeJob', 'resetForm'];
+    
     protected $rules = [
         'newTitle' => 'required',
         'newQuantity' => 'required',
