@@ -21,6 +21,7 @@
             "productImgAlt"=>"Card Image",
             "productPrice"=>$card->price,
             "productInput"=>false,
+            "productIndex"=>0,
             "productNotAvailable"=>!$card->sellable,
             "productInsufficientFunds"=>$card->price>\Auth::user()->balance,
             "productBtnBuy"=>$card->sellable,
@@ -63,14 +64,16 @@
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">CardId:</label>
                     <input type="text" class="form-control" id="cardId" wire:model="card_id">
+                    <label for="recipient-name" class="col-form-label">BundleId:</label>
+                    <input type="text" class="form-control" id="bundleId" wire:model="bundle_id">
                 </div>
                 <div class="form-group">
                     On Date/Time:
                     <input placeholder="yyyy-mm-ddThh:mm" type="datetime-local" min="2020-06-01T08:30" max="2099-06-30T16:30" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" class="form-control" wire:model.defer="whenTime">
                     OR On Price Lower Than:
-                    <input placeholder="$" type="number" step="0.01" class="form-control" wire:model.defer="whenPriceBigger">
-                    On On Price Higher Than:
                     <input placeholder="$" type="number" step="0.01" class="form-control" wire:model.defer="whenPriceSmaller">
+                    On On Price Higher Than:
+                    <input placeholder="$" type="number" step="0.01" class="form-control" wire:model.defer="whenPriceBigger">
                 </div>
                 </form>
             </div>

@@ -16,6 +16,7 @@
                 <img src="{{asset('storage/'.$card->image)}}" alt="card-container">
             </div>
         @endforeach
+        
     </div>
 @endif
 @if (session()->has('error'))
