@@ -117,3 +117,14 @@ th:hover{
 .dropdown-item-delete:hover{
     background-color: red;
 }
+
+.form-control{
+    margin-bottom: 3px;
+}
+
+.product-container{
+    border: solid 1px grey; margin:5px; float:left; padding:5px; text-align:center;
+    /* height: 450px; */
+    width: 200px;
+
+}
