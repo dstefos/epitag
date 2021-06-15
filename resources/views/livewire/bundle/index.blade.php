@@ -11,10 +11,27 @@
         Bundle bought succesfully. <br>
         Cards obtained: <br>
         @foreach(session('cards') as $card)
-            <div class="card-box">
-                {{$card->title}} <br>
-                <img src="{{asset('storage/'.$card->image)}}" alt="card-container">
-            </div>
+            @livewire('card', ['options'=>[
+                "product"=>$card,
+                "productTitle"=>$card->title,
+                "productLabel"=>false,
+                "productInfoLabel"=>"Seller",
+                "productInfoData"=>App\Models\User::find($card->user_id)->name,
+                "productImgSrc"=>asset('storage/'.$card->image),
+                "productImgAlt"=>"Card Image",
+                "productPriceVisible"=>false,
+                "productPrice"=>$card->price,
+                "productInput"=>false,
+                "productIndex"=>0,
+                "productNotAvailable"=>false,
+                "productInsufficientFunds"=>false,
+                "productBtnBuy"=>false,
+                "productBtnSell"=>false,
+                "productBtnUnsell"=>false,
+                "productBtnScheduleCard"=>false,
+                "productBtnScheduleBundle"=>false,
+                "productBtnDelete"=>false
+            ]])
         @endforeach
         
     </div>

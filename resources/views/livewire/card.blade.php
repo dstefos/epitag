@@ -2,7 +2,7 @@
     <div class="row"><span class="col-12 product-title">{{$productTitle}}</span></div>
     @if($productLabel)<div class="row"><span class="col-12 product-label"> {{$productInfoLabel}}: <b>{{$productInfoData}}</b></span></div>@endif
     <div class="row"> <img class="col-12 product-image" src="{{$productImgSrc}}" alt="{{$productImgAlt}}"></div>
-    <div class="row"><span class="col-12 product-price"> Price <b>${{$productPrice}}</b></span></div>
+    @if($productPriceVisible)<div class="row"><span class="col-12 product-price"> Price <b>${{$productPrice}}</b></span></div>@endif
     @if($productInsufficientFunds)<div class="row"><span class="col-12"><b style="color:red;">Insufficient Funds</b></b></span></div>@endif
     @if($productNotAvailable)<div class="row"><span class="col-12"><b style="color:red;">Not available</b></span></div>@endif
     @if($productInput)<div class="row"><div class="col-12"> <input class="form-control" type="number" step="0.01" min=0></div></div>@endif

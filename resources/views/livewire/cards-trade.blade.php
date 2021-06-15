@@ -19,6 +19,7 @@
             "productInfoData"=>App\Models\User::find($card->user_id)->name,
             "productImgSrc"=>asset('storage/'.$card->image),
             "productImgAlt"=>"Card Image",
+            "productPriceVisible"=>true,
             "productPrice"=>$card->price,
             "productInput"=>false,
             "productIndex"=>0,
@@ -31,23 +32,6 @@
             "productBtnScheduleBundle"=>false,
             "productBtnDelete"=>false
         ]])
-    @endforeach
-    @foreach($cards as $index=>$card)
-    <div class="card-box card-box-market @if($card->price>\Auth::user()->balance) disabled @endif">
-        <div class="card-title">{{$card->title}}</div>
-        <div class="card-seller">Seller: <b>{{App\Models\User::find($card->user_id)->name}}</b></div>
-        <img src="@if($card->image=='bundle.png'){{asset('storage/img/bundle.png')}} @else {{asset('storage/'.$card->image)}} @endif" alt=""> 
-        <div class="card-price">Price: <b>${{$card->price}}</b></div> 
-        <div class="card-buy-btn">
-            @if($card->price>\Auth::user()->balance) <b style="color:red;">Insufficient Funds</b>  
-            @elseif($card->sellable)
-            <button class="btn btn-danger" wire:click="$emit('buy', {{$card->id}})">BUY</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="$('#cardId').val({{$card->id}});">Schedule</button>
-            @else
-            <b style="color:red;">Not available</b>
-            @endif
-        </div>
-    </div>
     @endforeach
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

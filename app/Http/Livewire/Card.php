@@ -8,7 +8,7 @@ class Card extends Component
 {
     public $productTitle=false, $productInfoLabel=false, $productInfoData=false, $productLabel=false, $productImgSrc=false, $productImgAlt=false;
     public $productPrice=false, $productInput=false, $productBtnBuy=false, $productBtnSell=false, $productBtnUnsell=false, $productBtnScheduleCard=false, $productBtnScheduleBundle=false, $productBtnDelete=false;
-    public $product, $options, $productNotAvailable=false, $productInsufficientFunds=false, $productIndex=0;
+    public $product, $options, $productNotAvailable=false, $productInsufficientFunds=false, $productIndex=0, $productPriceVisible=false;
 
     public function mount()
     {
@@ -22,6 +22,7 @@ class Card extends Component
         $this->productImgAlt=$this->options['productImgAlt'];
         
         $this->productPrice=$this->options['productPrice'];
+        $this->productPriceVisible=$this->options['productPriceVisible'];
         $this->productInput=$this->options['productInput'];
 
         $this->productInsufficientFunds=$this->options['productInsufficientFunds'];

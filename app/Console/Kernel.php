@@ -44,7 +44,7 @@ class Kernel extends ConsoleKernel
                 
                 $timeCondition=$job->whenTime!=null?(now()>new Carbon($job->whenTime)):false;
                 $priceSmaller=$job->whenPriceSmaller!=null?$price<$job->whenPriceSmaller:false;
-                $priceBigger=$job->whenPriceBigger!=null?$price<$job->whenPriceBigger:false;
+                $priceBigger=$job->whenPriceBigger!=null?$price>$job->whenPriceBigger:false;
                 print($timeCondition.'-'.$priceSmaller.'-'.$priceBigger);
                 if($timeCondition || $priceSmaller || $priceBigger){
                     if($job->card_id!=null){
